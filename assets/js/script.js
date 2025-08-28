@@ -5,7 +5,26 @@ const modalRegister = document.querySelector("#modal-register");
 const btnCancelLogin = document.querySelector("#btn-cancel-login");
 const btnCancelRegister = document.querySelector("#btn-cancel-register");
 
+function soma(num01, num02) {
+    const somar = num01 + num02;
+    console.log(somar); 
+}
 
+soma(5, 2)
+
+// arrow function
+const multiplicar = (num01, num02) => {
+    return num01 * num02 
+}
+
+const dividir = (num01, num02) => {
+    return num01 / num02 
+}   
+
+console.log(multiplicar(5, 8));
+console.log(dividir(5, 2));
+
+// addEventListener => Escuta o evento de click e executa a função
 btnLogin.addEventListener("click", (e) => {
     modalLogin.classList.remove("hide-modal");
     modalLogin.classList.add("show-modal");
