@@ -6,6 +6,7 @@ const btnCancelLogin = document.querySelector("#btn-cancel-login");
 const btnCancelRegister = document.querySelector("#btn-cancel-register");
 const btnLoginOpen = document.querySelector("#btn-login-open");
 const inputEmail = document.querySelector("#email");
+const inputSenha = document.querySelector("#senha");
 const resultado = document.querySelector("#resultado");
 
 const pegar_valor = (valor) => {
@@ -13,8 +14,27 @@ const pegar_valor = (valor) => {
     <div class="valor">
       <h1>${valor}</h1>
     </div>
-  `
-}
+  `;
+};
+
+const calcular = (valor01, valor02) => {
+  const soma = Number(valor01) + Number(valor02);
+  const subtrair = valor01 - valor02;
+  const multiplicar = valor01 * valor02;
+  const dividir = valor01 / valor02;
+
+  console.log(typeof valor01);
+  
+
+  return (resultado.innerHTML = `
+    <div class="calcular">
+      <div class="soma">${soma}</div>
+      <div class="subtrair">${subtrair}</div>
+      <div class="multiplicar">${multiplicar}</div>
+      <div class="dividir">${dividir}</div>
+    </div>
+  `);
+};
 
 function soma(num01, num02) {
   const somar = num01 + num02;
@@ -52,8 +72,10 @@ btnCancelLogin.addEventListener("click", (e) => {
   modalLogin.classList.remove("show-modal");
   modalLogin.classList.add("hide-modal");
   inputEmail.value = "";
+  inputSenha.value = "";
   resultado.innerHTML = "";
   inputEmail.style.borderBottom = "0.5rem solid rgb(255, 255, 255)";
+  inputSenha.style.borderBottom = "0.5rem solid rgb(255, 255, 255)";
 });
 
 btnCancelRegister.addEventListener("click", (e) => {
@@ -69,14 +91,20 @@ btnCancelRegister.addEventListener("click", (e) => {
 inputEmail.addEventListener("focus", () => {
   inputEmail.style.borderBottom = "0.5rem solid rgb(46, 21, 138)";
 });
+inputSenha.addEventListener("focus", () => {
+  inputSenha.style.borderBottom = "0.5rem solid rgb(46, 21, 138)";
+});
 
 btnLoginOpen.addEventListener("click", (e) => {
   e.preventDefault();
   const email = inputEmail.value;
-  pegar_valor(email);
+  const senha = inputSenha.value;
+  resultado.classList.add("resultado_calcular");
+  calcular(email, senha);   
 });
-
 inputEmail.addEventListener("focusout", () => {
   inputEmail.style.borderBottom = "0.5rem solid rgb(255, 255, 255)";
-})
-
+});
+inputSenha.addEventListener("focusout", () => {
+  inputSenha.style.borderBottom = "0.5rem solid rgb(255, 255, 255)";
+});
